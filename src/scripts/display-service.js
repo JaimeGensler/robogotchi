@@ -33,5 +33,6 @@ export class DisplayService {
     async displayMovieTitle(robo, title){
         const movieTitle = await robo.movieTitleSearch(title); //Uncaught TypeError
         $('#movieTitle').html(movieTitle);
+        return movieTitle;
     }
 }

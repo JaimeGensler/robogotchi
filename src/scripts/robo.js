@@ -45,7 +45,8 @@ export class Robogotchi {
                 return false;
             }
             return response.json().then(function(jsonResponse){
-                console.log(jsonResponse.Title);
+                console.log(jsonResponse);
+                console.log('jsonResponse.Title:', jsonResponse.Title);
                 return jsonResponse.Title;
             });
         })
