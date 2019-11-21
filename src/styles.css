@@ -38,6 +38,10 @@ body {
     justify-content: center;
 }
 
+#info {
+    display: none;
+}
+
 #face {
     border-radius: 80px;
     max-width: 100%;
