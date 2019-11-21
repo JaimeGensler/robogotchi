@@ -7,7 +7,6 @@ export class DisplayService {
         $('div#robo').prepend(`<h1>${robo.name}</h1>`);
         $('input#name').remove();
         this.updateStats(robo);
-
         this.showFace(robo, 'hello');
     }
 
@@ -29,5 +28,10 @@ export class DisplayService {
             $('#face').attr('src', smileGIF);
         }, 3000);
         return true;
+    }
+
+    async displayMovieTitle(robo, title){
+        const movieTitle = await robo.movieTitleSearch(title); //Uncaught TypeError
+        $('#movieTitle').html(movieTitle);
     }
 }

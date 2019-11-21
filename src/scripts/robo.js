@@ -37,7 +37,7 @@ export class Robogotchi {
         });
     }
 
-    movieSearch(movieTitle){
+    movieTitleSearch(movieTitle){
         return fetch(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.OMBD_KEY}`)
         .then(function(response){
             if(response.status !== 200){
