@@ -18,8 +18,8 @@ $(document).ready(function () {
     $('input#searchbar').on('change', function () {
         let searchTerm = $('#searchbar').val();
         robo.movieTitleSearch(searchTerm);
-        // displayMovieTitle(searchTerm);
-        // $('#movieTitle').html(movieTitle);
+        // display.displayMovieTitle(movieTitleResult);
+        // $('#movieTitle').html(movieTitleResult);
         // console.log(search);
     })
 });

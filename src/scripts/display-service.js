@@ -30,9 +30,14 @@ export class DisplayService {
         return true;
     }
 
-    async displayMovieTitle(robo, title){
-        const movieTitle = await robo.movieTitleSearch(title); //Uncaught TypeError
-        $('#movieTitle').html(movieTitle);
-        return movieTitle;
-    }
+    // async displayMovieTitle(robo, movieTitle){
+    //     const movieTitleQuery = await robo.movieTitleSearch(movieTitle); //Uncaught (in promise) TypeError: robo.movieTitleSearch is not a function at DisplayService.displayMovieTitle
+    //     if(movieTitleQuery){
+    //         $('#movieTitle').html(movieTitleQuery);
+    //     } else {
+    //         $('#face').attr('src', errorGIF);
+    //         console.log('awww, shit, here we go again');
+    //     }
+    //     return true;
+    // }
 }
