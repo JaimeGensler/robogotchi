@@ -1,22 +1,24 @@
 import { Robogotchi } from './scripts/robo.js';
-import { DisplayService } from './scripts/display-service.js';
 import $ from 'jquery';
 import './styles.css';
 import staticGIF from './assets/static.gif';
 
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#face').attr('src', staticGIF);
-    let display = new DisplayService();
+    $('#statusBar').hide();
+
     let robo;
-    $('input#name').on('change', function() {
+    $('input#name').on('change', function () {
         robo = new Robogotchi($('input#name').val());
-        display.start(robo);
-        $('#searchbar').fadeIn();
+        $('#statusBar').fadeIn();
     });
-    $('input#searchbar').on('change', function(){
+
+    $('input#searchbar').on('change', function () {
         let searchTerm = $('#searchbar').val();
-        let search = robo.movieSearch(searchTerm);
-        console.log(search);
-    })
+        const movieTitleResult = robo.movieTitleSearch(searchTerm);
+        robo.display.MovieTitle(robo, movieTitleResult);
+        $('#movieTitle').html(movieTitleResult);
+    });
+
 });

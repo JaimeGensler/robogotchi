@@ -1,33 +1,36 @@
 import $ from 'jquery';
-import errorGIF from './../assets/error.gif';
 import smileGIF from './../assets/smile.gif';
+import errorGIF from './../assets/error.gif';
 
 export class DisplayService {
-    start(robo) {
-        $('div#robo').prepend(`<h1>${robo.name}</h1>`);
+    constructor(name) {
+        $('div#robo').prepend(`<h1>${name}</h1>`);
         $('input#name').remove();
-        this.updateStats(robo);
-
-        this.showFace(robo, 'hello');
     }
 
-    updateStats(robo) {
-        $(`span#energy`).text(robo.energy);
-        setInterval( () => {
-            $(`span#energy`).text(robo.energy);
-        }, 1000);
-    }
+    // updateStats(robo) {
+    //     $(`span#energy`).text(robo.energy);
+    //     setInterval( () => {
+    //         $(`span#energy`).text(robo.energy);
+    //     }, 1000);
+    // }
 
-    async showFace(robo, emotion) {
-        const gifURL = await robo.emote(emotion);
-        if (gifURL) {
-            $('#face').attr('src', gifURL);
-        } else {
-            $('#face').attr('src', errorGIF);
-        }
+    async face(gif) {
+        $('#face').attr('src', gif);
         setTimeout( () => {
             $('#face').attr('src', smileGIF);
         }, 3000);
+    }
+
+    async displayMovieTitle(movieTitle){
+        const movieTitleQuery = await robo.movieTitleSearch(movieTitle);
+        if(movieTitleQuery){
+            $('#info').show();
+            $('#info').html(movieTitleQuery);
+        } else {
+            $('#face').attr('src', errorGIF);
+            console.log('awww, shit, here we go again');
+        }
         return true;
     }
 }
