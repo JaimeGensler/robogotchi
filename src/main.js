@@ -6,11 +6,11 @@ import staticGIF from './../assets/static.gif';
 
 $(document).ready(function () {
     $('#face').attr('src', staticGIF);
-    $('#statusBar').hide();
+    // $('#statusBar').hide();
 
     let robo;
-    $('input#name').on('change', function () {
-        robo = new Robogotchi($('input#name').val());
+    $('input#name-input').on('change', function () {
+        robo = new Robogotchi($('input#name-input').val());
         $('#statusBar').fadeIn();
     });
 

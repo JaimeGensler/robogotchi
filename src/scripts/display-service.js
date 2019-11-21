@@ -4,8 +4,9 @@ import errorGIF from './../../assets/error.gif';
 
 export class DisplayService {
     constructor(name) {
-        $('div#robo').prepend(`<h1>${name}</h1>`);
-        $('input#name').remove();
+        $('div#robo').prepend(`<h1 id='name
+        '>${name}</h1>`);
+        $('input#name-input').remove();
     }
 
     // updateStats(robo) {
@@ -24,12 +25,12 @@ export class DisplayService {
 
     async displayMovieTitle(movie){
         if(movie.title){
-            $('#info').show().attr('display', 'flex');
+            $('#disp').show().attr('display', 'flex');
             $('#face').hide();
-            $('#info').append(`<img src='${movie.poster}'>`);
-            $('#info').append(``);
-            $('#info').append(`<h1 id='movieTitle'> ${movie.title} </h1>`);
-            $('#info').append(movie.title);
+            $('#disp').append(`<img src='${movie.poster}'>`);
+            $('#disp').append(``);
+            $('#disp').append(`<h1 id='movieTitle'> ${movie.title} </h1>`);
+            $('#disp').append(movie.title);
         } else {
             $('#face').attr('src', errorGIF);
             console.log('awww, shit, here we go again');

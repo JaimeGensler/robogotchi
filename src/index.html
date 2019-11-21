@@ -7,23 +7,31 @@
 </head>
 <body>
     <div id='robo'>
-        <input type='text' name='robo-name' id='name' placeholder='name'>
+        <input type='text' name='robo-name' id='name-input' placeholder='name'>
         <div id='border'>
             <div id='screen'>
                 <img id='face'>
-                <div id='info'>
-                    <img src='https://images-na.ssl-images-amazon.com/images/I/71rNJQ2g-EL._SY606_.jpg' alt='poster' id='poster'>
-                    <h3 id='disp-title'>TITLE</h3>
-                    <h5 id='disp-subtitle'>subtitle</h5>
-
-
+                <div id='disp'>
+                    <div class="box" id='disp-poster'>
+                        <img src='https://images-na.ssl-images-amazon.com/images/I/71rNJQ2g-EL._SY606_.jpg' alt='poster'>
+                    </div>
+                    <div class="box" id='disp-title'>
+                        <h3></h3>
+                    </div>
+                    <div class="box" id='disp-mediafacts'>
+                        <p></p>
+                    </div>
+                    <div class="box" id='disp-synop'>
+                        <p></p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
     <div id='statusBar'>
         <div id='interact'>
-            <h2>Interact</h2>
+            <h2 id="interact-header">Interact</h2>
             <input type='text' id='searchbar' placeholder='search'>
             <p id="movieTitle"></p>
         </div>
