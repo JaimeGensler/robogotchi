@@ -41,21 +41,22 @@ export class Robogotchi {
     }
 
     async movieTitleSearch(movieTitle) {
-        let title;
+        let movie = {};
         try {
             const response = await fetch(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.OMBD_KEY}`);
             if (!response.ok) {
                 throw new Error(`Error in OMBD response: ${response.status}`);
-                title =  'Hmm, can\'t seem to find that movie...'
+                movie.title =  'Hmm, can\'t seem to find that movie...';
             } else {
                 const jsonResponse = await response.json();
-                title = jsonResponse.Title;
+                console.log(jsonResponse);
+                movie.title = jsonResponse.Title;
             }
         }
         catch (error) {
             throw new Error(`OMBD Fetch Error: ${error}`);
-            title = 'Hmm, can\'t seem to find that movie...'
+            movie.title = 'Hmm, can\'t seem to find that movie...';
         }
-
+        this.display.displayMovieTitle(movie);
     }
 }

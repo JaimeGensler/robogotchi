@@ -22,11 +22,14 @@ export class DisplayService {
         }, 3000);
     }
 
-    async displayMovieTitle(movieTitle){
-        const movieTitleQuery = await robo.movieTitleSearch(movieTitle);
-        if(movieTitleQuery){
-            $('#info').show();
-            $('#info').html(movieTitleQuery);
+    async displayMovieTitle(movie){
+        if(movie.title){
+            $('#info').show().attr('display', 'flex');
+            $('#face').hide();
+            $('#info').append(`<img src='${movie.poster}'>`);
+            $('#info').append(``);
+            $('#info').append(`<h1 id='movieTitle'> ${movie.title} </h1>`);
+            $('#info').append(movie.title);
         } else {
             $('#face').attr('src', errorGIF);
             console.log('awww, shit, here we go again');

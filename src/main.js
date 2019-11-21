@@ -16,9 +16,6 @@ $(document).ready(function () {
 
     $('input#searchbar').on('change', function () {
         let searchTerm = $('#searchbar').val();
-        const movieTitleResult = robo.movieTitleSearch(searchTerm);
-        robo.display.MovieTitle(robo, movieTitleResult);
-        $('#movieTitle').html(movieTitleResult);
+        robo.movieTitleSearch(searchTerm);
     });
-
 });
