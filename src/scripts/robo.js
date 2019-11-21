@@ -1,4 +1,4 @@
-import errorGIF from './../assets/error.gif';
+import errorGIF from './../../assets/error.gif';
 import { DisplayService } from './display-service.js';
 
 export class Robogotchi {

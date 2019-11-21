@@ -1,7 +1,7 @@
 import { Robogotchi } from './scripts/robo.js';
 import $ from 'jquery';
 import './styles.css';
-import staticGIF from './assets/static.gif';
+import staticGIF from './../assets/static.gif';
 
 
 $(document).ready(function () {

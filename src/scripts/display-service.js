@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import smileGIF from './../assets/smile.gif';
-import errorGIF from './../assets/error.gif';
+import smileGIF from './../../assets/smile.gif';
+import errorGIF from './../../assets/error.gif';
 
 export class DisplayService {
     constructor(name) {
