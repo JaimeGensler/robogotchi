@@ -1,4 +1,5 @@
 import errorGIF from './../../assets/error.gif';
+import notFound from './../../assets/coverImageNotFound.png'
 import { DisplayService } from './display-service.js';
 
 export class Robogotchi {
@@ -8,19 +9,11 @@ export class Robogotchi {
         this.mood = 'happy';
         this.display = new DisplayService(name);
 
-        // this.energyLoss();
         this.emote('hello');
     }
 
-    // energyLoss() {
-    //     setInterval(() => {
-    //         this.energy--;
-    //     }, 2000);
-    // }
-
     async emote(emotion){
         let gif;
-
         try {
             const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_KEY}&tag=${emotion}&rating=PG`);
 
@@ -36,11 +29,10 @@ export class Robogotchi {
             gif = errorGIF;
             console.error(`GIPHY Fetch Error: ${error}`);
         }
-
         this.display.face(gif);
     }
 
-    async movieTitleSearch(movieTitle) {
+    async movieSearch(movieTitle) {
         let movie = {};
         try {
             const response = await fetch(`http://www.omdbapi.com/?t=${movieTitle}&apikey=${process.env.OMBD_KEY}`);
@@ -51,12 +43,20 @@ export class Robogotchi {
                 const jsonResponse = await response.json();
                 console.log(jsonResponse);
                 movie.title = jsonResponse.Title;
+                movie.director =  jsonResponse.Director;
+                movie.actors =  jsonResponse.Actors;
+                movie.genre =  jsonResponse.Genre;
+                movie.year = jsonResponse.Year;
+                movie.poster = (jsonResponse.Poster === 'N/A') ? notFound : jsonResponse.Poster;
+                movie.rating = jsonResponse.Rated;
+                movie.plot = jsonResponse.Plot;
+                movie.score = (jsonResponse.Ratings[1]) ? jsonResponse.Ratings[1].Value : 'Unreviewed';
             }
         }
         catch (error) {
             throw new Error(`OMBD Fetch Error: ${error}`);
             movie.title = 'Hmm, can\'t seem to find that movie...';
         }
-        this.display.displayMovieTitle(movie);
+        this.display.displayMedia(movie);
     }
 }

@@ -6,7 +6,8 @@ import staticGIF from './../assets/static.gif';
 
 $(document).ready(function () {
     $('#face').attr('src', staticGIF);
-    // $('#statusBar').hide();
+    $('#statusBar').hide();
+    $('#disp').hide();
 
     let robo;
     $('input#name-input').on('change', function () {
@@ -16,6 +17,6 @@ $(document).ready(function () {
 
     $('input#searchbar').on('change', function () {
         let searchTerm = $('#searchbar').val();
-        robo.movieTitleSearch(searchTerm);
+        robo.movieSearch(searchTerm);
     });
 });

@@ -4,17 +4,9 @@ import errorGIF from './../../assets/error.gif';
 
 export class DisplayService {
     constructor(name) {
-        $('div#robo').prepend(`<h1 id='name
-        '>${name}</h1>`);
+        $('div#robo').prepend(`<h1 id='name'>${name}</h1>`);
         $('input#name-input').remove();
     }
-
-    // updateStats(robo) {
-    //     $(`span#energy`).text(robo.energy);
-    //     setInterval( () => {
-    //         $(`span#energy`).text(robo.energy);
-    //     }, 1000);
-    // }
 
     async face(gif) {
         $('#face').attr('src', gif);
@@ -23,16 +15,22 @@ export class DisplayService {
         }, 3000);
     }
 
-    async displayMovieTitle(movie){
+    async displayMedia(movie){
+        console.log(movie);
+        console.log(movie.score);
         if(movie.title){
-            $('#disp').show().attr('display', 'flex');
+            $('#disp').show().attr('display', 'grid');
             $('#face').hide();
-            $('#disp').append(`<img src='${movie.poster}'>`);
-            $('#disp').append(``);
-            $('#disp').append(`<h1 id='movieTitle'> ${movie.title} </h1>`);
-            $('#disp').append(movie.title);
+            $('#disp-poster img').attr('src', movie.poster);
+            console.log(movie.poster);
+            $('#disp-title').html(`${movie.title} <span class='year'>(${movie.year})</span>`);
+            $('#disp-mediafacts p').html(`Genre: ${movie.genre} <br>
+            Director: ${movie.director} <br>
+            🍅: ${movie.score}`);
+            $('#disp-synop p').html(movie.plot);
         } else {
             $('#face').attr('src', errorGIF);
+            $('#disp-poster img').attr('src', coverImageNotFound);
             console.log('awww, shit, here we go again');
         }
         return true;
