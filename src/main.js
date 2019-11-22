@@ -18,5 +18,6 @@ $(document).ready(function () {
     $('input#searchbar').on('change', function () {
         let searchTerm = $('#searchbar').val();
         robo.movieSearch(searchTerm);
+        $('input#searchbar').val('');
     });
 });

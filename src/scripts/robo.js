@@ -13,6 +13,7 @@ export class Robogotchi {
     }
 
     async emote(emotion){
+        console.log(emotion);
         let gif;
         try {
             const response = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY_KEY}&tag=${emotion}&rating=PG`);
@@ -58,5 +59,8 @@ export class Robogotchi {
             movie.title = 'Hmm, can\'t seem to find that movie...';
         }
         this.display.displayMedia(movie);
+        setTimeout( () => {
+            this.emote(movieTitle)
+        }, 7000);
     }
 }

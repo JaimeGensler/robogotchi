@@ -9,10 +9,12 @@ export class DisplayService {
     }
 
     async face(gif) {
+        $('#disp').hide();
         $('#face').attr('src', gif);
         setTimeout( () => {
             $('#face').attr('src', smileGIF);
         }, 3000);
+        $('#face').show();
     }
 
     async displayMedia(movie){
@@ -33,6 +35,5 @@ export class DisplayService {
             $('#disp-poster img').attr('src', coverImageNotFound);
             console.log('awww, shit, here we go again');
         }
-        return true;
     }
 }
