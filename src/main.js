@@ -16,8 +16,7 @@ $(document).ready(function () {
     });
 
     $('input#searchbar').on('change', function () {
-        let searchTerm = $('#searchbar').val();
-        robo.movieSearch(searchTerm);
+        robo.movieSearch($('#searchbar').val());
         $('input#searchbar').val('');
     });
 });

@@ -42,7 +42,6 @@ export class Robogotchi {
                 movie.title =  'Hmm, can\'t seem to find that movie...';
             } else {
                 const jsonResponse = await response.json();
-                console.log(jsonResponse);
                 movie.title = jsonResponse.Title;
                 movie.director =  jsonResponse.Director;
                 movie.actors =  jsonResponse.Actors;

@@ -13,18 +13,15 @@ export class DisplayService {
         $('#face').attr('src', gif);
         setTimeout( () => {
             $('#face').attr('src', smileGIF);
-        }, 3000);
+        }, 4000);
         $('#face').show();
     }
 
     async displayMedia(movie){
-        console.log(movie);
-        console.log(movie.score);
         if(movie.title){
             $('#disp').show().attr('display', 'grid');
             $('#face').hide();
             $('#disp-poster img').attr('src', movie.poster);
-            console.log(movie.poster);
             $('#disp-title').html(`${movie.title} <span class='year'>(${movie.year})</span>`);
             $('#disp-mediafacts p').html(`Genre: ${movie.genre} <br>
             Director: ${movie.director} <br>
@@ -33,7 +30,6 @@ export class DisplayService {
         } else {
             $('#face').attr('src', errorGIF);
             $('#disp-poster img').attr('src', coverImageNotFound);
-            console.log('awww, shit, here we go again');
         }
     }
 }
